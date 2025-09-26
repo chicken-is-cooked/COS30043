@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <h1>Testing Week 4</h1>
+        <h2>Calendal testing app</h2>
+
+        <button @click="view='week'">Week</button>
+        <button @click="view='month'">Month</button>
+        <button @click="view='year'">Year</button>
+
+        <div v-if="view=='week'">
+            <h3>This is week view</h3>
+        </div>
+
+        <div v-else-if="view=='month'">
+            <h3>This is month view</h3>
+        </div>
+
+        <div v-else>
+            <h3>This is year view</h3>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    view: 'week'
+                }
+            }
+        });
+        app.mount('#app');
+    </script>
+</body>
+</html>
