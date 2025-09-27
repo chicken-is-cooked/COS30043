@@ -19,7 +19,7 @@
    
 </head>
 <body>
-    <!--nav bar-->
+    <!--NAV BAR-->
     <div id="navbar"> 
         <nav>
             <ul class="nav">
@@ -31,7 +31,7 @@
         </nav>
     </div>
 
-    <!--picture-->
+    <!--HEADER-->
     <div class="header">
         <img id="header_img" src="../assignment1/img/background.png" alt="header image">
         <div class="header_hello">
@@ -40,11 +40,13 @@
         </div>
     </div>
 
-    <!--why choose us part-->  
+    <!--WHY CHOOSE US-->  
     <div class="why_choose_us" style="background-color: #825e58; color: white; font-family: 'Coiny', cursive;">
         <div id="header">
             <h1>WHY CHOOSE US</h1>
-            <p>Read more about us</p>
+            <p>BakeBerry - one of the best cake and pastry business model - is opened by bakers and business researchers
+                ... and much more than that!! 
+            </p>
         </div>
         <!--wcu tabs-->
         <div class="container py-4">
@@ -88,10 +90,62 @@
             </div>
         </div>
     </div>
-    <!--event form-->
-    <div>
+
+    <!--EVENT INFOR-->
+    <div style="background-color: #edeadf; color:#4f322d;">
+        <div>
+            <h1>Event Information</h1>
+        </div>
+
+        <div class="row">
+			<div class="col-sm-3">
+				<p><label for="eventname">Event Name:</label>
+					<input type="text" id="eventname" v-model="eventObj.eventname" />
+				</p>
+			</div>
+
+			<div class="col-sm-6">
+					<label>Category:</label><br />
+					<input type="radio" id="technology" v-model="eventObj.category" value="Technology" />
+					<label for = "technology">Technology</label><br />
+					<input type="radio" id="business" v-model="eventObj.category" value="Business" />
+					<label for = "business">Business</label><br />
+                    <input type="radio" id="marketing" v-model="eventObj.category" value="Marketing" />
+					<label for = "marketing">Marketing</label><br />
+                    <input type="radio" id="finance" v-model="eventObj.category" value="Finance" />
+					<label for = "finance">Finance</label><br />
+                    <input type="radio" id="all" v-model="eventObj.category" value="All" />
+					<label for = "all">All</label><br />
+			</div>
+		</div>
+
+        <!--the table-->
+        <div class="row">
+			<div class="table-responsive">
+                <table  class="table table-striped table-hover">
+
+                    <tr>
+                        <th>Event ID</th>
+                        <th>Event Name</th>
+                        <th>Category</th>
+                        <th>Duration (Hour)</th>
+                    </tr>
+                    <!-- Using v-for to loop and list them -->
+                    <tr v-for="m in filterMarks"   >
+                        <td>{{m.eventid}}</td>
+                        <td>{{m.eventname}}</td>
+                        <td>{{m.category}}</td>
+                        <td>{{m.durationhour}}</td>
+                    </tr> 
+                </table>
+            </div>
+		</div>
 
     </div>
+    <script src="js/vue.js"></script> <!--loading vue-->
+    <script src="js/event.js"></script> <!--custom script file-->
+
+    <!--REGISTATION FORM-->
 
 </body>
 </html>
