@@ -15,7 +15,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Coiny&display=swap" rel="stylesheet">
     <!--css-->
-    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="../assignment1/styles/index.css">
    
 </head>
 <body>
@@ -99,8 +99,9 @@
 
         <div class="row">
 			<div class="col-sm-3">
-				<p><label for="eventname">Event Name:</label>
-					<input type="text" id="eventname" v-model="eventObj.eventname" />
+				<p>
+                    <label for="searchName">Event Name:</label>
+                    <input type="text" id="searchName" v-model="searchName" />
 				</p>
 			</div>
 
@@ -146,6 +147,43 @@
     <script src="js/event.js"></script> <!--custom script file-->
 
     <!--REGISTATION FORM-->
+    <div class="registation_form" style="background-color: #825e58; color: white; font-family: 'Coiny', cursive;">
+        <div id="header">
+            <h1>REGISTATION FORM</h1>
+            <p>Fill in the form below to register for our upcoming events!</p>
+        </div>
+        <form action="/submit_registration" method="post">
+            <label for="name">Username:</label><br>
+            <input type="text" id="name" name="name" required><br><br>
 
+            <label for="password">Password:</label><br>
+            <input type="password" id="password" name="password" required><br><br>
+
+            <label for="event">Select Event:</label><br>
+            <select id="event" name="event" required>
+                <option value="tech_inno">Tech Innovations Conference</option>
+                <option value="startup">Startup Pitch Day</option>
+                <option value="ai_machine">AI & Machine Learning Summit</option>
+                <option value="cyber_workshop">Cybersecurity Workshop</option>
+                <option value="digital_marketing">Digital Marketing Bootcamp</option>
+                <option value="blockchain">Blockchain and Cryptocurrency</option>
+                <option value="entrepreneurship">Entrepreneurship Forum</option>
+                <option value="data_science">Data Science Hackathon</option>
+                <option value="leadership">Leadership and Management Summit</option>
+                <option value="ecommerce">E-commerce Strategies</option>
+                <option value="ai_business">AI for Business</option>
+                <option value="iot">IoT & Smart Devices Expo</option>
+                <option value="brand">Brand Strategy and Growth</option>
+                <option value="investment">Investment and Wealth Management</option>
+                <option value="financial_tech">Financial Technology (FinTech) Summit</option>
+                <option value="ai_ethic">AI Ethics and Regulations</option>
+                <option value="business_ana">Business Analytics Workshop</option>
+                <option value="seo_content">SEO and Content Marketing</option>
+                <option value="crypto">Cryptocurrency Investment Strategies</option>
+                <option value="social_media">Social Media Marketing Trends</option>
+            </select><br><br>
+
+            <input type="submit" value="Register">
+        </form>
 </body>
 </html>
