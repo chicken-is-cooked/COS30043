@@ -2,7 +2,9 @@ const app = Vue.createApp({
     data() {
         return {
             eventObj: { eventid: '', eventname: '', category: 'Business', durationhour: ''},
+            searchId: '',
             searchName: '',
+            searchDuration: '',
             events: [
                 {eventid: 'EVT10001', eventname: 'Tech Innovations Conference', category: 'Technology', durationhour: 8},
                 {eventid: 'EVT10002', eventname: 'Startup Pitch Day', category: 'Business', durationhour: 6},
@@ -31,8 +33,10 @@ const app = Vue.createApp({
     },
     computed: {
         filterMarks() {
-            return this.events.filter(e =>
+            return this.events.filter(
+                e => e.eventid.toLowerCase().includes(this.searchId.toLowerCase()) &&
                 e.eventname.toLowerCase().includes(this.searchName.toLowerCase()) &&
+                (this.searchDuration === '' || e.durationhour.toString().includes(this.searchDuration)) &&
                 (this.eventObj.category === 'All' || !this.eventObj.category || e.category === this.eventObj.category)
             );
         },

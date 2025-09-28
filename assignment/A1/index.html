@@ -92,17 +92,25 @@
 
     <!--EVENT INFOR-->
     <div style="background-color: #edeadf; color:#4f322d;">
-        <div>
+        <div id="header">
             <h1>Event Information</h1>
-            <p>Discover BakeBerry’s upcoming events—crafted to connect passion, creativity, and business opportunities.</p>
+            <p>At BakeBerry, we blend our passion for baking with a progressive business mindset, hosting events that connect people through ideas, creativity, and enterprise. Discover BakeBerry’s upcoming events—crafted to connect passion, creativity, and business opportunities.</p>
         </div>
 
-        <div class="row">
-			<div class="col-sm-3">
-				<p>
+        <div class="row align-items-start mb-3">
+			<div class="col-md-4">
+                <div class="mb-3">
+                    <label for="searchId">Event ID:</label>
+                    <input type="text" id="searchId" v-model="searchId" />
+                </div>
+				<div class="mb-3">
                     <label for="searchName">Event Name:</label>
                     <input type="text" id="searchName" v-model="searchName" />
-				</p>
+				</div>
+                <div class="mb-3">
+                    <label for="searchDuration">Duration (Hour):</label>
+                    <input type="text" id="searchDuration" v-model="searchDuration" />
+                </div>
 			</div>
 
 			<div class="col-sm-6">
@@ -149,7 +157,7 @@
     <!--REGISTATION FORM-->
     <div style="background-color: #825e58;" class="register">
         <div class="form">
-            <div id="header">
+            <div>
                 <h1>REGISTATION FORM</h1>
                 <p>Fill in the form below to register for our upcoming events!</p>
             </div>

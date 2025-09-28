@@ -5,6 +5,10 @@ body {
     padding: 0;
     box-sizing: border-box;
 }
+#header { /*for the header tho (not the biggest one)*/
+    text-align: center;
+    padding: 40px 20px;
+}
 
 /*navigation bar*/
 #navbar {
