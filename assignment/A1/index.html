@@ -162,7 +162,7 @@
                 <p>Fill in the form below to register for our upcoming events!</p>
             </div>
 
-            <form action="/submit_registration" method="post">
+            <form @submit.prevent="handleSubmit">
                 <label for="name">Username: </label><br>
                 <input type="text" id="name" name="name" v-model="form.username" required><br><br>
 
@@ -170,8 +170,11 @@
                 <input type="password" id="password" name="password" v-model="form.password" required><br><br>
 
                 <label for="confirm_pass">Confirm Password: </label><br />
-                <input type="password" id="confirm_pass" name="confirm_pass" v-model="form.confirm_pass" required><br><br>
-                <span class="error" v-if="notMatchPass">Password don't match</span>
+                <div style="display: flex; align-items: center;">
+                    <input type="password" id="confirm_pass" name="confirm_pass" v-model="form.confirm_pass" required>
+                    <span class="error ms-2" v-if="notMatchPass" style="font-size: 0.95em;">Passwords don't match</span>
+                </div>
+                <br>
 
                 <label for="category">Category</label><br />
                     <input type="radio" id="technology" v-model="eventObj.category" value="Technology" name="technology" />
@@ -188,12 +191,12 @@
                     <option v-for="m in filterMarks" :value="m.eventname">{{ m.eventname }}</option>
                 </select><br><br>
 
-                <input type="submit" value="Register">
+                <button type="submit">Register</button>
             </form>
         </div>
     </div>
 
-    <script src="../framework/js/vue.js"></script> <!--loading vue-->
+    <script src="../framework/js/vue.global.js"></script> <!--loading vue-->
     <script src="../framework/js/event.js"></script> <!--custom script file-->
 </body>
 </html>

@@ -43,7 +43,7 @@ const app = Vue.createApp({
 
         notMatchPass() {
             return (
-                this.form.password && this.form.confirm_pass && this.form.password === this.form.confirm_pass
+                this.form.confirm_pass && this.form.password !== this.form.confirm_pass
             );
         }
 
@@ -53,6 +53,28 @@ const app = Vue.createApp({
     watch: {
         'eventObj.category'() {
             this.form.selectevent = '';
+        }
+    },
+
+    methods: {
+        handleSubmit() {
+            if (!this.notMatchPass) {
+                // i have to ask AI to help me this part because idk how to submit form in vuejs
+                const form = document.createElement('form');
+                form.action = 'https://mercury.swin.edu.au/it000000/formtest.php';
+                form.method = 'post';
+
+                form.innerHTML = `
+                    <input name="name" value="${this.form.username}">
+                    <input name="password" value="${this.form.password}">
+                    <input name="confirm_pass" value="${this.form.confirm_pass}">
+                    <input name="category" value="${this.eventObj.category}">
+                    <input name="event" value="${this.form.selectevent}">
+                `;
+                document.body.appendChild(form);
+                form.submit();
+            }
+
         }
     },
 });
