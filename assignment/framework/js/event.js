@@ -1,7 +1,7 @@
 const app = Vue.createApp({
     data() {
         return {
-            eventObj: { eventid: '', eventname: '', category: '', durationhour: ''},
+            eventObj: { eventid: '', eventname: '', category: 'Business', durationhour: ''},
             searchName: '',
             events: [
                 {eventid: 'EVT10001', eventname: 'Tech Innovations Conference', category: 'Technology', durationhour: 8},
@@ -24,7 +24,9 @@ const app = Vue.createApp({
                 {eventid: 'EVT10018', eventname: 'SEO and Content Marketing', category: 'Marketing', durationhour: 7},
                 {eventid: 'EVT10019', eventname: 'Cryptocurrency Investment Strategies', category: 'Finance', durationhour: 9},
                 {eventid: 'EVT10020', eventname: 'Social Media Marketing Trends', category: 'Marketing', durationhour: 5}
-            ]
+            ],
+
+            form: { username:'', password:'', confirm_pass:'', selectevent:'' }
         }
     },
     computed: {
@@ -33,8 +35,21 @@ const app = Vue.createApp({
                 e.eventname.toLowerCase().includes(this.searchName.toLowerCase()) &&
                 (this.eventObj.category === 'All' || !this.eventObj.category || e.category === this.eventObj.category)
             );
-         }
+        },
+
+        notMatchPass() {
+            return (
+                this.form.password && this.form.confirm_pass && this.form.password === this.form.confirm_pass
+            );
+        }
+
         
-    }
+    },
+
+    watch: {
+        'eventObj.category'() {
+            this.form.selectevent = '';
+        }
+    },
 });
 app.mount('body');

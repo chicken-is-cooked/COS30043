@@ -15,7 +15,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Coiny&display=swap" rel="stylesheet">
     <!--css-->
-    <link rel="stylesheet" href="../assignment1/styles/index.css">
+    <link rel="stylesheet" href="../framework/css/index.css">
    
 </head>
 <body>
@@ -33,7 +33,7 @@
 
     <!--HEADER-->
     <div class="header">
-        <img id="header_img" src="../assignment1/img/background.png" alt="header image">
+        <img id="header_img" src="../framework/img/background.png" alt="header image">
         <div class="header_hello">
             <h1>Welcome to BakeBerry</h1>
             <p>Baking with love! Eating with passion!</p>
@@ -43,10 +43,9 @@
     <!--WHY CHOOSE US-->  
     <div class="why_choose_us" style="background-color: #825e58; color: white; font-family: 'Coiny', cursive;">
         <div id="header">
-            <h1>WHY CHOOSE US</h1>
-            <p>BakeBerry - one of the best cake and pastry business model - is opened by bakers and business researchers
-                ... and much more than that!! 
-            </p>
+            <h1>WHY CHOOSE BAKEBERRY</h1>
+            <p>BakeBerry reimagines the bakery experience with data-driven menus, limited runs, and made-fresh quality—turning everyday treats into standout moments.
+            Read more about us</p>
         </div>
         <!--wcu tabs-->
         <div class="container py-4">
@@ -84,7 +83,7 @@
                 <div class="col">
                     <div class="feature-box h-100">
                         <h2>Customer Satisfaction</h2>
-                        <p>We are committed to providing exceptional customer service and ensuring that our clients are completely satisfied with every aspect of their event.</p>
+                        <p>BakeBerry offers fresh, inventive bakes made with responsibly sourced ingredients and a commitment to consistent quality.</p>
                     </div>      
                 </div>
             </div>
@@ -95,7 +94,7 @@
     <div style="background-color: #edeadf; color:#4f322d;">
         <div>
             <h1>Event Information</h1>
-            <p></p>
+            <p>Discover BakeBerry’s upcoming events—crafted to connect passion, creativity, and business opportunities.</p>
         </div>
 
         <div class="row">
@@ -144,8 +143,8 @@
 		</div>
 
     </div>
-    <script src="js/vue.js"></script> <!--loading vue-->
-    <script src="js/event.js"></script> <!--custom script file-->
+
+
 
     <!--REGISTATION FORM-->
     <div style="background-color: #825e58;" class="register">
@@ -154,40 +153,39 @@
                 <h1>REGISTATION FORM</h1>
                 <p>Fill in the form below to register for our upcoming events!</p>
             </div>
-            <form action="/submit_registration" method="post">
-                <label for="name">Username:</label><br>
-                <input type="text" id="name" name="name" required><br><br>
 
-                <label for="password">Password:</label><br>
-                <input type="password" id="password" name="password" required><br><br>
+            <form action="/submit_registration" method="post">
+                <label for="name">Username: </label><br>
+                <input type="text" id="name" name="name" v-model="form.username" required><br><br>
+
+                <label for="password">Password: </label><br>
+                <input type="password" id="password" name="password" v-model="form.password" required><br><br>
+
+                <label for="confirm_pass">Confirm Password: </label><br />
+                <input type="password" id="confirm_pass" name="confirm_pass" v-model="form.confirm_pass" required><br><br>
+                <span class="error" v-if="notMatchPass">Password don't match</span>
+
+                <label for="category">Category</label><br />
+                    <input type="radio" id="technology" v-model="eventObj.category" value="Technology" name="technology" />
+					<label for = "technology">Technology</label><br />
+					<input type="radio" id="business" v-model="eventObj.category" value="Business" name="business" />
+					<label for = "business">Business</label><br />
+                    <input type="radio" id="marketing" v-model="eventObj.category" value="Marketing" name="marketing" />
+					<label for = "marketing">Marketing</label><br />
+                    <input type="radio" id="finance" v-model="eventObj.category" value="Finance" name="finance" />
+					<label for = "finance">Finance</label><br />
 
                 <label for="event">Select Event:</label><br>
-                <select id="event" name="event" required>
-                    <option value="tech_inno">Tech Innovations Conference</option>
-                    <option value="startup">Startup Pitch Day</option>
-                    <option value="ai_machine">AI & Machine Learning Summit</option>
-                    <option value="cyber_workshop">Cybersecurity Workshop</option>
-                    <option value="digital_marketing">Digital Marketing Bootcamp</option>
-                    <option value="blockchain">Blockchain and Cryptocurrency</option>
-                    <option value="entrepreneurship">Entrepreneurship Forum</option>
-                    <option value="data_science">Data Science Hackathon</option>
-                    <option value="leadership">Leadership and Management Summit</option>
-                    <option value="ecommerce">E-commerce Strategies</option>
-                    <option value="ai_business">AI for Business</option>
-                    <option value="iot">IoT & Smart Devices Expo</option>
-                    <option value="brand">Brand Strategy and Growth</option>
-                    <option value="investment">Investment and Wealth Management</option>
-                    <option value="financial_tech">Financial Technology (FinTech) Summit</option>
-                    <option value="ai_ethic">AI Ethics and Regulations</option>
-                    <option value="business_ana">Business Analytics Workshop</option>
-                    <option value="seo_content">SEO and Content Marketing</option>
-                    <option value="crypto">Cryptocurrency Investment Strategies</option>
-                    <option value="social_media">Social Media Marketing Trends</option>
+                <select id="event" name="event" v-model="form.selectevent" required>
+                    <option v-for="m in filterMarks" :value="m.eventname">{{ m.eventname }}</option>
                 </select><br><br>
 
                 <input type="submit" value="Register">
             </form>
         </div>
     </div>
+
+    <script src="../framework/js/vue.js"></script> <!--loading vue-->
+    <script src="../framework/js/event.js"></script> <!--custom script file-->
 </body>
 </html>
