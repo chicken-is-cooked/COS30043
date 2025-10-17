@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>v-bind</title>
+	<meta charset="utf-8" >
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" >
+</head>
+
+<body>
+	<h2>what is v-bind?</h2>
+	<p>The v-bond directive lets us bind an HTML attribute
+		to data in the Vue instance. This makes it easy to change the attribute value dynamically.</p>
+	<!--v bind part-->
+	<div id="app">
+		<p>The browser finds the <em>img</em> and <em>facebook</em> attribute
+		values from the Vue instance with the use of v-bind </p>
+		<p>This is my <a v-bind:href ="facebook">facebook account</a></p>
+		<p>This is my picture</p>
+		<img v-bind:src="img" alt="image">
+	</div>
+	<!--vue.js-->
+	<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+	<script>
+		var app = Vue.createApp ({
+			data() {
+				return {
+					facebook: "https://www.facebook.com/ngquykhanh.3011/",
+					img: "flower.jpg"
+				}
+			}
+		})
+		app.mount('#app')
+	</script>
+</body>
+
+</html>
