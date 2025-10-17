@@ -7,12 +7,25 @@
 </head>
 <body>
     <h1>String test</h1>
-    <div id="#app">
+    <div id="app">
         <p>Please enter your name: </p>
-        <input v-model="name">
-        <p>{{message}}</p>
+        <input type="text" v-model="name">
+
+        <p v-if="name === 'Khanh'">Nice name, Khanh!</p>
+        <p v-else>It's not your name</p>
+
         <!--vuejs-->
         <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+        <script>
+            var app = Vue.createApp ({
+                data () {
+                    return {
+                        name : ''
+                    }
+                }
+            })
+            app.mount('#app')
+        </script>
     </div>
 </body>
 </html>
