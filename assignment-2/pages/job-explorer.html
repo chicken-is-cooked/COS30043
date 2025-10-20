@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Job Explorer</title>
+
+  <!-- Vue 3 + Vue Router 4 (CDN) -->
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <script src="https://unpkg.com/vue-router@4/dist/vue-router.global.js"></script>
+</head>
+<body>
+    <nav>
+        <ul>
+        <li><a href="../pages/job-explorer.html">Job Explorer</a></li>
+        <li><a href="../pages/application-form.html">Job Application</a></li>
+        <li><a href="../pages/to-do-list.html">To do list</a></li>
+        </ul>
+    </nav>
+  <div id="app"></div>
+
+  <!-- Root layout: JobList bên trái (trên), nội dung (Overview/Detail) hiển thị ở dưới -->
+  <template id="app-tpl">
+    <div>
+      <h1>Job Explorer</h1>
+
+      <h2>Jobs</h2>
+      <job-list :jobs="jobs"></job-list>
+
+      <hr />
+
+      <router-view></router-view>
+    </div>
+  </template>
+
+  <!-- Template JobList (link Overview + list job_id) -->
+  <template id="job-list-tpl">
+    <ul>
+      <li><router-link to="/overview">Overview</router-link></li>
+      <li v-for="j in jobs" :key="j.job_id">
+        <router-link :to="'/job/' + j.job_id">{{ j.job_id }}</router-link>
+      </li>
+    </ul>
+  </template>
+
+  <!-- Template JobOverview -->
+  <template id="overview-tpl">
+    <div>
+      <h2>Job Overview</h2>
+      <p>
+        Insight Hire connects passionate individuals with opportunities in AI, Data Science,
+        Cybersecurity, and Software Development. Browse the list on the left and pick a job
+        code to see full details here.
+      </p>
+    </div>
+  </template>
+
+  <!-- Template JobDetail -->
+  <template id="job-detail-tpl">
+    <div v-if="job">
+      <h2>{{ job.job_title }} ({{ job.job_id }})</h2>
+      <ul>
+        <li><strong>Company:</strong> {{ job.company }}</li>
+        <li><strong>Location:</strong> {{ job.location }}</li>
+        <li><strong>Category:</strong> {{ job.category }}</li>
+        <li><strong>Employment Type:</strong> {{ job.employment_type }}</li>
+        <li><strong>Salary Range:</strong> {{ job.salary_range }}</li>
+        <li><strong>Job Level:</strong> {{ job.job_level }}</li>
+        <li><strong>Required Skills:</strong> {{ job.required_skills?.join(', ') }}</li>
+        <li><strong>Preferred Qualifications:</strong> {{ job.preferred_qualifications?.join(', ') }}</li>
+        <li><strong>Description:</strong> {{ job.job_description }}</li>
+        <li><strong>Application Deadline:</strong> {{ job.application_deadline }}</li>
+        <li><strong>Posted Date:</strong> {{ job.posted_date }}</li>
+        <li><strong>Supervisor:</strong> {{ job.supervisor }}</li>
+        <li><strong>Positions Available:</strong> {{ job.positions_available }}</li>
+        <li><strong>Start Date:</strong> {{ job.start_date }}</li>
+        <li><strong>Tags:</strong> {{ job.tags?.join(', ') }}</li>
+      </ul>
+    </div>
+    <div v-else>Job not found.</div>
+  </template>
+
+  <!-- NỐI FILE THEO ĐÚNG THỨ TỰ -->
+  <script src="../components/jobs.js"></script>
+  <script src="../components/job-list.js"></script>
+  <script src="../components/job-detail.js"></script>
+  <script src="../components/job-overview.js"></script>
+  <script src="../components/app.js"></script>
+  <script src="../router.js"></script>
+  <script src="../main.js"></script>
+</body>
+</html>

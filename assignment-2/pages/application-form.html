@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Insight Hire - Application Form</title>
+  <!-- Vue luôn load TRƯỚC component -->
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <script src="../components/application-form.js"></script>
+</head>
+<body>
+  <nav>
+    <ul>
+      <li><a href="../pages/job-explorer.html">Job Explorer</a></li>
+      <li><a href="../pages/application-form.html">Job Application</a></li>
+      <li><a href="../pages/to-do-list.html">To do list</a></li>
+    </ul>
+  </nav>
+
+  <h2>Job Application</h2>
+  <div id="app">
+    <main><application-form></application-form></main>
+  </div>
+
+  <!-- MOUNT Ở CUỐI BODY -->
+  <script>
+    const app = window.Vue.createApp({});
+    app.component('application-form', ApplicationForm); // ApplicationForm là const trong file component
+    app.mount('#app');
+  </script>
+</body>
+</html>

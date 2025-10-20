@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>To-Do List</title>
+</head>
+<body>
+   <nav>
+    <ul>
+      <li><a href="../pages/job-explorer.html">Job Explorer</a></li>
+      <li><a href="../pages/application-form.html">Job Application</a></li>
+      <li><a href="../pages/to-do-list.html">To do list</a></li>
+    </ul>
+  </nav>
+  <div id="app">
+    <!-- Mount thẳng ToDoList -->
+    <to-do-list></to-do-list>
+  </div>
+
+  <!-- Template của component (đúng kiểu dùng id) -->
+  <script type="text/x-template" id="todo-list-tpl">
+    <div>
+      <h2>To-Do List</h2>
+
+      <input
+        type="text"
+        v-model="newTask"
+        placeholder="Enter a new task"
+        @keyup.enter="addTask"
+      />
+      <button @click="addTask">Add</button>
+
+      <ul>
+        <li v-for="task in tasks" :key="task.id">
+          <span>
+            {{ task.text }}
+            <span v-if="task.high">(High Priority)</span>
+            <span v-else>(Low Priority)</span>
+          </span>
+
+          <button @click="togglePriority(task)">
+            {{ task.high ? 'Mark as Low Priority' : 'Mark as High Priority' }}
+          </button>
+          <button @click="deleteTask(task.id)">Delete</button>
+        </li>
+      </ul>
+    </div>
+  </script>
+
+  <!-- Vue (bạn có thể trỏ tới bản copy trong project nếu cần) -->
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+  <!-- Component ToDo -->
+  <script src="../components/todo-list.js"></script>
+
+  <!-- Mount nhỏ gọn, KHÔNG đụng đến components/app.js của Job Explorer -->
+  <script>
+    Vue.createApp({
+      components: { ToDoList: window.ToDoList },
+      template: '<to-do-list />'
+    }).mount('#app');
+  </script>
+</body>
+</html>
