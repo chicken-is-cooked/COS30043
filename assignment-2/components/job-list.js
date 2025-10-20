@@ -1,4 +1,3 @@
-// components/jobs.js
 window.JOBS = [
   {
     job_id: "MLA101",
@@ -212,7 +211,6 @@ model behavior under various environments.`,
   }
 ];
 
-// components/job-list.js
 window.JobList = {
   props: ['jobs'],
   template: '#job-list-tpl'

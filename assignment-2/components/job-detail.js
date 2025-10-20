@@ -1,4 +1,3 @@
-// components/job-detail.js
 window.JobDetail = {
   template: '#job-detail-tpl',
   data() { return { jobs: window.JOBS }; },

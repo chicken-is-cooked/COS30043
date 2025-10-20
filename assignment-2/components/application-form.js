@@ -1,4 +1,3 @@
-// KHÔNG tạo app ở đây, chỉ khai báo component
 const ApplicationForm = {
   data() {
     return {

@@ -7,15 +7,14 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
   <!--css-->
-  <link rel="stylesheet" href="../style/to-do-list.css" />
+  <link rel="stylesheet" href="../style/application-form.css" />
   <!--boostrap-->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
-  <!-- Vue luôn load TRƯỚC component -->
   <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
   <script src="../components/application-form.js"></script>
 </head>
-<body>
+<body id="application-form">
   <nav>
     <ul>
       <li><a href="../pages/job-explorer.html">Job Explorer</a></li>
@@ -29,10 +28,10 @@
     <main><application-form></application-form></main>
   </div>
 
-  <!-- MOUNT Ở CUỐI BODY -->
+
   <script>
     const app = window.Vue.createApp({});
-    app.component('application-form', ApplicationForm); // ApplicationForm là const trong file component
+    app.component('application-form', ApplicationForm); 
     app.mount('#app');
   </script>
 </body>

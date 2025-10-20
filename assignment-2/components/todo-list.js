@@ -4,7 +4,7 @@ window.ToDoList = {
   data() {
     return {
       newTask: '',
-      // mỗi task: { id, text, high }
+
       tasks: []
     };
   },
@@ -12,7 +12,7 @@ window.ToDoList = {
     addTask() {
       const text = this.newTask.trim();
       if (!text) return;
-      // thêm lên đầu mảng
+
       this.tasks.unshift({ id: Date.now(), text, high: false });
       this.newTask = '';
     },
