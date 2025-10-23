@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compute BMI</title>
+</head>
+<body id="app">
+    <h2>Compute App</h2>
+
+    <form>
+        <label for="weight">Enter Weight in kg: </label>
+        <input type="number" id="weight" name="weight" v-model.number="weight" step="0.1" required><br><br>
+
+        <label for="height">Enetr Height in cm: </label>
+        <input type="number" id="height" name="height" v-model.number="heightCm" step="1" required><br><br>
+
+        <h3 id="result">{{result}}</h3>
+    </form>
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    weight: 0,
+                    heightCm: 0
+                }
+            },
+            computed: {
+               height() {
+                    return this.heightCm / 100;
+               },
+               bmi() {
+                    if (this.height > 0) {
+                        return this.weight / (this.height * this.height);
+                    }
+                    return 0;
+               },
+                result() {
+                      const bmiValue = this.bmi;
+                      if (bmiValue === 0) {
+                            return '';
+                      } else if (bmiValue < 18.5) {
+                            return `Your BMI is ${bmiValue.toFixed(2)} (Underweight)`;
+                      } else if (bmiValue < 24.9) {
+                            return `Your BMI is ${bmiValue.toFixed(2)} (Normal weight)`;
+                      } else if (bmiValue < 29.9) {
+                            return `Your BMI is ${bmiValue.toFixed(2)} (Overweight)`;
+                      } else {
+                            return `Your BMI is ${bmiValue.toFixed(2)} (Obesity)`;
+                      }
+                }
+
+            }
+        });
+        app.mount('body');
+    </script>
+</body>
+</html>
