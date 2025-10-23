@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creating Component</title>
+</head>
+<body id="app">
+    <h2>Creating Component</h2>
+
+   <create-component></create-component>
+    
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script>
+        const app = Vue.createApp({})
+
+        app.component('create-component', // indicating the component tag
+        {
+        // defining data to be used in the component
+        data:function(){
+        return{
+            statPosts:[],
+            strStatus:''
+        }
+        },
+        // define the template for the component
+        //why i always get errors when i copy my code here:)
+        template: ' <label>Status            </label> \
+                    <input type="text" v-model="strStatus" @keyup.enter="add"/> \
+                    <button @click="add">Add</button> \
+                    <ul> \
+                        <li v-for="(s, index) in statPosts" :key="index" style="test-decoration: none;"> \
+                            <span>{{ s }}</span> \
+                            <button @click="remove(index)">Del</button> \
+                        </li> \
+                    </ul> ',
+        // your code here
+        // defining the methods for add and remove status
+        methods:{
+            add:function(){
+                const status = this.strStatus.trim()
+                if(status){
+                    this.statPosts.push(status)
+                    this.strStatus = ''
+                }
+            },
+            remove:function(index){
+                this.statPosts.splice(index,1)
+            }
+        }
+        });
+
+        app.mount('#app');
+    </script>
+</body>
+</html>

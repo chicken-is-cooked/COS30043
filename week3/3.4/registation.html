@@ -27,8 +27,7 @@
     <h3>Phone Information</h3>
     <div class="row align-items-start g-3">
       <div class="col">
-        <label>Operating System</label><br>
-        <!-- GIỮ value **khớp dữ liệu**: Android / IOS / Windows -->
+        <label>Operating System</label><br>       
         <select v-model="operatingSystem">
           <option :value="'Android'">Android</option>
           <option :value="'IOS'">iOS</option>
@@ -37,7 +36,6 @@
       </div>
       <div class="col">
         <label>Phone Model</label><br>
-        <!-- Đổ options theo OS đã chọn -->
         <select v-model="phoneModel">
           <option disabled value="">-- select a model --</option>
           <option v-for="m in modelsForOS" :key="m.model" :value="m.model">
