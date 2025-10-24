@@ -1,4 +1,3 @@
-// style/router.js
 window.router = VueRouter.createRouter({
   history: VueRouter.createWebHashHistory(),
   routes: [
