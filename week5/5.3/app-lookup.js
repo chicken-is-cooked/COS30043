@@ -1,4 +1,4 @@
-// Defining the list of units in an array (điền đúng mẫu, không thêm bớt)
+// Defining the list of units in an array 
 var units = [
   {code:'ICT10001', desc:'Problem Solving with ICT', cp:12.5, type:'Core'},
   {code:'COS10005', desc:'Web Development', cp:12.5, type:'Core'},
@@ -37,7 +37,7 @@ const Unit = {
   computed: {
     // filter function (returns the selected unit object)
     filteredUnits: function() {
-      const id = this.$route.params.id; // lấy :id từ URL
+      const id = this.$route.params.id; 
       return this.units.filter(u => u.code === id);
     }
   }

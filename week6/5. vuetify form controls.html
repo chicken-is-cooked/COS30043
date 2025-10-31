@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!-- link to material design -->
+	<link href="https://cdn.jsdelivr.net/npm/@mdi/font@6.x/css/materialdesignicons.min.css" rel="stylesheet">
+	
+	<!-- link to vuetify -->
+	<link href="https://cdn.jsdelivr.net/npm/vuetify@3.5.14/dist/vuetify.min.css" rel="stylesheet">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+  <div id="app">
+  <h1>Form</h1>
+  <v-app>
+  <v-main>
+  <v-container>
+  <v-form method="post"  action="http://mercury.swin.edu.au/it000000/formtest.php" >
+	
+	<v-text-field name="firstName" v-model="firstName"   :rules="nameRules" label="First Name"  required >   </v-text-field>
+    <v-text-field name="email" v-model="email" type="email" :rules="emailRules" label="Email" required >   </v-text-field>
+       
+    <v-radio-group name="sex" v-model="sex">  <!-- radio button -->
+        <v-radio label="Male" value="M" color="red"></v-radio>
+        <v-radio label="Female" value="F" color="green"></v-radio>
+        <v-radio label="Other" value="O" color="blue"></v-radio>
+    </v-radio-group>
+	
+	
+	<v-layout>
+		<v-checkbox name="prog[]"  v-model="program"  label="P01 Mathematics" value="P01"></v-checkbox> <!-- checkbox -->
+		<v-checkbox name="prog[]"  v-model="program"  label="P02 Swimming" value="P02"></v-checkbox>
+		<v-checkbox name="prog[]"  v-model="program"  label="P03 Dancing" value="P03"></v-checkbox>
+	</v-layout>
+
+
+
+    <v-select name="state" v-model="state" :items="stateList"  label="State"  ></v-select>  <!-- select -->
+    <v-textarea name="comments" label="Comments" v-model="comments" ></v-textarea> 
+
+  	<v-btn  type="submit"   color="success"  >Submit</v-btn> 
+    
+  </v-form>
+  </v-container>
+  </v-main>
+  </v-app>
+  </div>
+
+	<!-- link to vue -->
+	<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+	
+	<!-- link to vuetify  -->
+ 	<script src="https://cdn.jsdelivr.net/npm/vuetify@3.5.14/dist/vuetify.min.js"></script> 
+	
+	<!-- link to your own js -->  
+	<script src="vuetify form controls.js"></script> 
+</body> 
+</html>
