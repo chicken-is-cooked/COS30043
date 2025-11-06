@@ -67,9 +67,9 @@ const ApplicationForm = {
   template: `
     <div class="container py-4">
     <div class="card shadow-sm">
-      <div class="card-body">
-        <h2 class="h4 mb-3">Job Application</h2>
 
+      <div class="card-body">
+      <h2 style="margin-bottom: 30px">Job Application</h2>
         <form method="post"
               action="http://mercury.swin.edu.au/it000000/formtest.php"
               @submit="onSubmit">
@@ -215,7 +215,7 @@ const ApplicationForm = {
 
           <!-- Submit -->
           <div class="mt-4">
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn-primary">Submit</button>
           </div>
 
         </form>
